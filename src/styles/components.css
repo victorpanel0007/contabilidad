@@ -1,0 +1,135 @@
+/* ── Bottom Navigation ──────────────────────────────────────────────────── */
+.bottom-nav {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: var(--nav-height);
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  padding-top: 8px;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  z-index: 50;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.nav-item {
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  padding: 4px 8px; border-radius: var(--radius-md); cursor: pointer;
+  transition: all var(--transition); min-width: 52px;
+}
+.nav-icon {
+  width: 32px; height: 32px; border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; transition: all var(--transition); color: var(--text-muted);
+}
+.nav-label { font-size: 0.65rem; font-weight: 600; color: var(--text-muted); transition: color var(--transition); }
+.nav-item.active .nav-icon  { background: var(--accent-light); color: var(--accent); transform: translateY(-2px); }
+.nav-item.active .nav-label { color: var(--accent); }
+
+/* ── Sidebar ────────────────────────────────────────────────────────────── */
+.sidebar {
+  width: var(--sidebar-width);
+  height: 100%;
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border);
+  display: none;
+  flex-direction: column;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+.sidebar-logo {
+  padding: 20px 16px 8px;
+  display: flex; align-items: center; gap: 10px;
+  border-bottom: 1px solid var(--border); margin-bottom: 8px;
+  flex-shrink: 0;
+}
+.sidebar-logo-icon {
+  width: 36px; height: 36px; border-radius: var(--radius-sm);
+  background: var(--accent); display: flex; align-items: center; justify-content: center;
+}
+.sidebar-logo-text { font-size: 1.1rem; font-weight: 800; }
+.sidebar-nav { padding: 8px; flex: 1; }
+.sidebar-item {
+  display: flex; align-items: center; gap: 10px; padding: 10px 12px;
+  border-radius: var(--radius-md); cursor: pointer; transition: all var(--transition);
+  margin-bottom: 2px; color: var(--text-secondary); font-size: 0.9rem; font-weight: 500;
+}
+.sidebar-item:hover  { background: var(--bg-tertiary); color: var(--text-primary); }
+.sidebar-item.active { background: var(--accent-light); color: var(--accent); font-weight: 600; }
+.sidebar-item-icon   { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+.sidebar-footer {
+  padding: 12px; border-top: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+}
+.sidebar-user-avatar {
+  width: 36px; height: 36px; border-radius: var(--radius-full);
+  background: var(--accent); display: flex; align-items: center; justify-content: center;
+  color: white; font-weight: 700; font-size: 0.875rem; flex-shrink: 0;
+}
+.sidebar-user-info  { flex: 1; min-width: 0; }
+.sidebar-user-name  { font-size: 0.85rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sidebar-user-email { font-size: 0.7rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* ── Charts ─────────────────────────────────────────────────────────────── */
+.chart-container { position: relative; width: 100%; }
+
+/* ── Account Cards ──────────────────────────────────────────────────────── */
+.account-card {
+  background: var(--bg-card); border-radius: var(--radius-lg);
+  border: 1px solid var(--border); padding: 16px;
+  position: relative; overflow: hidden; cursor: pointer;
+  transition: all var(--transition);
+}
+.account-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.account-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.account-card-icon {
+  width: 40px; height: 40px; border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+}
+.account-card-name    { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 4px; font-weight: 500; }
+.account-card-balance { font-size: 1.3rem; font-weight: 800; }
+
+/* ── Budget items ───────────────────────────────────────────────────────── */
+.budget-item {
+  padding: 14px; background: var(--bg-card);
+  border-radius: var(--radius-lg); border: 1px solid var(--border); margin-bottom: 10px;
+}
+.budget-item-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.budget-item-info   { display: flex; align-items: center; gap: 10px; }
+.budget-category    { font-size: 0.9rem; font-weight: 600; }
+.budget-amounts     { font-size: 0.75rem; color: var(--text-muted); }
+.budget-amounts strong { color: var(--text-primary); }
+
+/* ── Goal Cards ─────────────────────────────────────────────────────────── */
+.goal-card {
+  background: var(--bg-card); border-radius: var(--radius-lg);
+  border: 1px solid var(--border); padding: 16px; margin-bottom: 10px;
+  cursor: pointer; transition: box-shadow var(--transition);
+}
+.goal-card:hover    { box-shadow: var(--shadow-md); }
+.goal-card-header   { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 12px; }
+.goal-name          { font-size: 0.95rem; font-weight: 700; }
+.goal-target        { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+.goal-percent       { font-size: 1.5rem; font-weight: 800; color: var(--accent); }
+
+/* ── Debt Cards ─────────────────────────────────────────────────────────── */
+.debt-card {
+  background: var(--bg-card); border-radius: var(--radius-lg);
+  border: 1px solid var(--border); padding: 14px 16px;
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 10px; cursor: pointer; transition: all var(--transition);
+}
+.debt-card:hover  { box-shadow: var(--shadow-md); }
+.debt-card-info   { flex: 1; min-width: 0; }
+.debt-name        { font-size: 0.9rem; font-weight: 600; }
+.debt-due         { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+.debt-amount      { font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+
+/* ── Desktop overrides ──────────────────────────────────────────────────── */
+@media (min-width: 768px) {
+  .sidebar    { display: flex; }
+  .bottom-nav { display: none; }
+  .btn-fab    { bottom: 24px; right: 24px; }
+}
