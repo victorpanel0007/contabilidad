@@ -5,6 +5,7 @@ import { ThemeManager } from './core/ThemeManager.js'
 import { renderAuth } from './modules/auth/AuthView.js'
 import { renderShell } from './modules/shell/Shell.js'
 import { checkDatabase } from './core/dbInit.js'
+import { supabase } from './core/supabase.js'
 
 export class App {
   constructor(container) {
@@ -17,6 +18,10 @@ export class App {
 
   async init() {
     this.theme.init()
+
+    // Si no hay Supabase configurado, la pantalla de error ya se muestra desde supabase.js
+    if (!supabase) return
+
     this.showSplash()
 
     const [dbStatus, session] = await Promise.all([
